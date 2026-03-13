@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alba Moreno | Logopedia Especializada</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- Variables de Color: Estilo Verde Elegante y Natural --- */
+        :root {
+            --primary: #3A5A40;
+            --secondary: #A3B18A;
+            --accent: #DAD7CD;
+            --bg-light: #F4F7F4;
+            --dark: #283618;
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(163, 177, 138, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(163, 177, 138, 0.2) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(218, 215, 205, 0.4) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(244, 247, 244, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a.link-text {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a.link-text:hover {
+            color: var(--secondary);
+        }
+
+        /* --- Redes Sociales Flotantes (Desktop) --- */
+        .social-sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 8px 20px rgba(58, 90, 64, 0.15);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--glass-border);
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1);
+            background: var(--primary);
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebd5a;
+        }
+
+        /* --- Contenedor Principal --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 5% 40px;
+            /* Usamos % para que respire en móviles */
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(163, 177, 138, 0.4);
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: #4a5d4e;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .blob-bg {
+            position: absolute;
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 1/1;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.5;
+        }
+
+        .profile-pic {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 3/4;
+            /* Mantiene la proporción en vez de usar height fijo */
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 6px solid white;
+            transform: rotate(2deg);
+            transition: 0.5s;
+        }
+
+        .profile-pic:hover {
+            transform: rotate(0deg) scale(1.02);
+            border-color: var(--secondary);
+        }
+
+        @keyframes morph {
+
+            0%,
+            100% {
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            }
+
+            50% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+        }
+
+        /* --- Botones --- */
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(58, 90, 64, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #2C422F;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(58, 90, 64, 0.3);
+        }
+
+        .btn-doctoralia {
+            background: #00C3A5;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 195, 165, 0.2);
+        }
+
+        .btn-doctoralia:hover {
+            background: #00a68c;
+            transform: translateY(-5px);
+        }
+
+        /* --- Tarjetas y Secciones --- */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* --- Timeline --- */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        .date {
+            font-weight: 800;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item h3 {
+            margin: 5px 0;
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .timeline-item h4 {
+            color: #5a6b5d;
+            font-weight: 400;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        /* --- Grid Especialidades --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-box {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 30px rgba(163, 177, 138, 0.2);
+        }
+
+        .skill-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .skill-box h3 {
+            color: var(--dark);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- Contacto --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.05rem;
+            word-break: break-word;
+            /* Evita que el texto rompa el móvil */
+        }
+
+        .info-item i {
+            width: 45px;
+            min-width: 45px;
+            height: 45px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--glass-border);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 20px;
+            background: var(--bg-light);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: 0.3s;
+            color: var(--dark);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #8fa092;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--primary);
+            font-weight: 500;
+            border-top: 1px solid var(--glass-border);
+        }
+
+
+        /* =========================================
+           ✨ RESPONSIVE DESIGN (MÓVILES Y TABLETS) ✨
+           ========================================= */
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 20px;
+            }
+
+            .hero-text p {
+                max-width: 100%;
+                margin: 0 auto 30px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links a.link-text {
+                display: none;
+            }
+
+            /* Oculta textos del menú, deja el botón */
+        }
+
+        @media (max-width: 768px) {
+
+            /* Dejar espacio debajo para la barra social en móviles */
+            body {
+                padding-bottom: 80px;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-logo {
+                font-size: 1.3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .glass-card {
+                padding: 25px 20px;
+            }
+
+            .form-box {
+                padding: 20px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            /* Botones ocupan todo el ancho en móvil */
+
+            /* Transformar la barra lateral en un menú inferior estilo APP */
+            .social-sidebar {
+                top: auto;
+                bottom: 0;
+                right: 0;
+                transform: none;
+                flex-direction: row;
+                width: 100%;
+                justify-content: space-around;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 15px 20px;
+                border-top: 1px solid var(--glass-border);
+                border-radius: 20px 20px 0 0;
+                box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            .social-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                box-shadow: none;
+                background: var(--bg-light);
+            }
+
+            .whatsapp-btn {
+                background: #25D366;
+                color: white;
+            }
+
+            footer {
+                padding-bottom: 100px;
+            }
+
+            /* Evita que el footer quede tapado por la barra */
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="nav-logo">Alba Moreno.</a>
+        <div class="nav-links">
+            <a href="#sobre-mi" class="link-text">Inicio</a>
+            <a href="#experiencia" class="link-text">Trayectoria</a>
+            <a href="#especialidades" class="link-text">Servicios</a>
+            <a href="#contacto" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.95rem;">Pedir Cita</a>
+        </div>
+    </nav>
+
+    <div class="social-sidebar">
+        <a href="https://instagram.com/logopeda.alba.moreno" target="_blank" class="social-btn" title="Instagram"><i
+                class="fab fa-instagram"></i></a>
+        <a href="mailto:albamorenocamara@gmail.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/34633774758" target="_blank" class="social-btn whatsapp-btn" title="WhatsApp Directo"><i
+                class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <div class="container">
+
+        <section class="hero" id="sobre-mi">
+            <div class="hero-text" data-aos="fade-right">
+                <div class="badge"><i class="fas fa-leaf"></i> Logopeda Colegiada</div>
+                <h1>Hola, soy <span>Alba Moreno</span></h1>
+                <p>Especialista en atención y tratamiento infantojuvenil. Trabajo cada día con empatía, evidencia
+                    científica y cercanía para ayudar a los más pequeños a encontrar su voz.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">Reserva tu cita <i
+                            class="fas fa-calendar-check"></i></a>
+                    <a href="https://www.doctoralia.es/z/7TyKv6" target="_blank" class="btn btn-doctoralia">Ver en
+                        Doctoralia <i class="fas fa-stethoscope"></i></a>
+                </div>
+            </div>
+
+            <div class="hero-image" data-aos="fade-left">
+                <div class="blob-bg"></div>
+                <img src="alba.jpg" alt="Alba Moreno Cámara" class="profile-pic"
+                    onerror="this.src='https://via.placeholder.com/380x480/A3B18A/ffffff?text=Tu+Foto+Aquí'">
+            </div>
+        </section>
+
+        <section id="especialidades" style="margin-top: 60px;" data-aos="fade-up">
+            <h2 class="section-title"><i class="fas fa-seedling" style="color: var(--secondary);"></i> Servicios de
+                Logopedia</h2>
+            <p style="margin-bottom: 30px; color: #5a6b5d; font-size: 1.1rem;">Intervención clínica presencial en
+                Espinardo y Molina de Segura.</p>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>TEA y ABA</h3>
+                    <p style="margin-top: 5px; color: #5a6b5d; font-size: 0.95rem; line-height: 1.5;">Intervención
+                        especializada basada en el análisis de conducta aplicado (ABA).</p>
+                </div>
+                <div class="skill-box">
+                    <i class="fas fa-face-grin-tongue"></i>
+                    <h3>Frenillo Lingual</h3>
+                    <p style="margin-top: 5px; color: #5a6b5d; font-size: 0.95rem; line-height: 1.5;">Intervención
+                        logopédica pre y post quirúrgica. Terapia miofuncional integral.</p>
+                </div>
+                <div class="skill-box">
+                    <i class="fas fa-comments"></i>
+                    <h3>Habla y Voz</h3>
+                    <p style="margin-top: 5px; color: #5a6b5d; font-size: 0.95rem; line-height: 1.5;">Evaluación y
+                        tratamiento de alteraciones articulatorias y patologías de la voz.</p>
+                </div>
+                <div class="skill-box">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Deglución Atípica</h3>
+                    <p style="margin-top: 5px; color: #5a6b5d; font-size: 0.95rem; line-height: 1.5;">Reeducación de
+                        patrones de respiración, succión, masticación y deglución.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia" style="margin-top: 80px;" data-aos="fade-up">
+            <div class="glass-card">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Trayectoria Profesional</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="date">Dic. 2025 - Presente</span>
+                        <h3>Logopeda Especializada</h3>
+                        <h4>Consonante. Centro Infanto-juvenil (Espinardo)</h4>
+                        <p>Evaluación e intervención en trastornos del habla, voz y deglución en población
+                            infanto-juvenil. Coordinación activa con familias.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="date">Ago. 2024 - Nov. 2025</span>
+                        <h3>Supervisora y Logopeda</h3>
+                        <h4>Abaúl. Asociación de TEA (Molina de Segura)</h4>
+                        <p>Reeducación del lenguaje en niños con TEA, intervención en deglución atípica e implementación
+                            de sistemas SAAC.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="date">Abr. 2025 - Dic. 2025</span>
+                        <h3>Máster en ABA</h3>
+                        <h4>Lovaas Foundation</h4>
+                        <p>Diseño de programas basados en Análisis de Conducta para niños con Trastorno del Espectro
+                            Autista.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="date">Sept. 2020 - Jun. 2024</span>
+                        <h3>Grado en Logopedia</h3>
+                        <h4>Universidad de Murcia</h4>
+                        <p>Trabajo de Fin de Grado enfocado en la intervención logopédica en frenillo lingual.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" style="margin-top: 40px;" data-aos="fade-up">
+            <div class="glass-card"
+                style="background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(163, 177, 138, 0.15));">
+                <h2 class="section-title" style="margin-bottom: 10px;"><i class="fas fa-paper-plane"></i> Reserva tu
+                    consulta</h2>
+                <p style="margin-bottom: 30px; font-size: 1.1rem; color: #4a5d4e;">Escríbeme para valorar el caso de tu
+                    peque o contáctame directamente por WhatsApp.</p>
+
+                <div class="contact-grid">
+                    <div class="contact-info-box">
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>WhatsApp / Teléfono</strong><br>
+                                <span style="color: var(--dark);">633 77 47 58</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <div>
+                                <strong>Correo Electrónico</strong><br>
+                                <span style="color: var(--dark);">albamorenocamara@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-instagram"></i>
+                            <div>
+                                <strong>Instagram</strong><br>
+                                <a href="https://instagram.com/logopeda.alba.moreno" target="_blank"
+                                    style="color: var(--primary); text-decoration: none; font-weight: 500;">@logopeda.alba.moreno</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <div>
+                                <strong>Zonas de atención</strong><br>
+                                <span style="color: var(--dark);">Molina de Segura / Espinardo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-box">
+                        <form action="AQUI_TU_WEBHOOK" method="POST">
+                            <input type="text" name="Nombre" placeholder="Tu Nombre o el de tu hijo/a" required>
+                            <input type="email" name="Correo" placeholder="Tu Correo Electrónico" required>
+                            <input type="tel" name="Telefono" placeholder="Tu Teléfono (opcional)">
+                            <textarea name="Mensaje" rows="4" placeholder="¿En qué puedo ayudaros? Cuéntame un poco..."
+                                required></textarea>
+                            <button type="submit" class="btn btn-primary"
+                                style="width: 100%; justify-content: center; font-size: 1.1rem;">
+                                Enviar Mensaje <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Alba Moreno Cámara - Graduada en Logopedia. <br><span
+                style="font-size: 0.9rem; color: #5a6b5d; margin-top: 5px; display: inline-block;">Intervención basada
+                en evidencia.</span></p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 50 });
+    </script>
+</body>
+
+</html>
